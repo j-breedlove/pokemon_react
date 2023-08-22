@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Montserrat:wght@400;700&display=swap');
+
+.pokecard {
+    font-family: 'ADLaM Display', cursive;
+    font-size: 24px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    width: 150px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+    transform: translateY(20px); /* Initial position for the animation */
+    opacity: 0; /* Initial opacity for the animation */
+    background-color: #3e1f5d;
+    color: #1bec15; /* Lighter color for better contrast with the card's background */
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    animation: deal 0.9s forwards; /* All cards now share the same animation */
+    /*animation-delay: calc(0.50s * var(--card-order, 0)); !**/
+    /*Using CSS variables to create a dynamic delay for the animation *!*/
+}
+
+.pokecard img {
+    width: 125px;
+    height: 125px;
+}
+
+.pokecard h3 {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+/* Keyframe animations remain the same */
+@keyframes slideInUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* ... Continue for the other cards as earlier */
+
+@keyframes deal {
+    0% {
+        opacity: 0;
+        transform: translateY(20vh) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.pokecard {
+    /* ...other styles... */
+
+    animation: deal 0.5s forwards;
+}
+
+.pokecard:nth-child(1) { animation-delay: 0.2s; }
+.pokecard:nth-child(2) { animation-delay: 0.4s; }
+.pokecard:nth-child(3) { animation-delay: 0.6s; }
+.pokecard:nth-child(4) { animation-delay: 0.8s; }

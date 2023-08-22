@@ -1,17 +1,27 @@
 import React from "react";
 import Pokecard from "../Pokecard/Pokecard";
 
-const Hand = ({ pokemons }) => {
+const Hand = ({ pokemons, isWinning }) => {
   const totalExperience = pokemons.reduce(
     (exp, pokemon) => exp + pokemon.exp,
     0,
   );
   return (
-    <div>
-      {pokemons.map((pokemon) => (
-        <Pokecard key={pokemon.id} pokemon={pokemon} />
+    <div className={"hand, container"}>
+      {pokemons.map((pokemon, index) => (
+        <Pokecard
+          key={pokemon.id}
+          style={{ "--card-order": index }}
+          pokemon={pokemon}
+        />
       ))}
-      <div>Total Experience: {totalExperience}</div>
+      <div
+        className={`total-experience-card ${isWinning ? "winning" : "losing"}`}
+      >
+        Total XP: {totalExperience}
+        <br />
+        <div>{isWinning ? " (Winning)" : " (Losing)"}</div>
+      </div>
     </div>
   );
 };
